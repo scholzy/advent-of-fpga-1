@@ -1,0 +1,14 @@
+; (executable
+;  (public_name advent-of-hardware)
+;  (name main)
+;  (libraries core hardcaml advent_of_hardware hardcaml_test_harness hardcaml_waveterm)
+;  (preprocess (pps ppx_hardcaml ppx_jane)))
+
+ (executables
+  (public_names aoh-rtl-generator advent-of-hardware)
+  (modes byte exe)
+  (names generate main)
+  (libraries core.command core_unix.command_unix core core_unix hardcaml hardcaml_test_harness advent_of_hardware jane_rope)
+ (preprocess
+  (pps ppx_hardcaml ppx_jane))
+ (promote))
