@@ -40,6 +40,14 @@ There are two outputs:
 
 By summing these two outputs, you can retrieve the final output to the problem.
 
+### State machine
+
+The core of the circuit is a state machine that reads in steps and direction (as unsigned integers and digital logic signals, respectively) and tracks the current position, the number of times the position is at zero, and the number of times we pass by zero while moving.
+
+I'm using `Modulo.unsigned_by_constant` and `Div.divide` from `hardcaml_circuits` to avoid needing to implement the modular arithmetic myself. Since we're only dividing by (the constant) 100 here, we can use these circuits to cheaply compute the quotients and remainders.
+
+The slightly tricky logic happens outside the `Always` state machine, where we compute the number of times the lock passes by (but doesn't land on) zero. On one hand, being able to write this in reasonably simple OCaml-like code made development straightforward, but being limited to unsigned integers made some parts a bit tricker, like needing two functions to step by positive (right) and negative (left) values.
+
 ## Testing and simulation
 
 The Hardcaml implementation is tested in three ways:
