@@ -69,7 +69,7 @@ let passed_zero_p position increment =
 
   Signal.uresize ~width:n_bits passes
 
-  let passed_zero_m position decrement =
+let passed_zero_m position decrement =
   let passes = mux2 (decrement <=: position)
     (zero n_bits) (
       (* Work out how far past zero we are *)

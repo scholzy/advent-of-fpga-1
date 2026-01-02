@@ -46,13 +46,17 @@ The Hardcaml implementation is tested in three ways:
 
 - Simple test cases: handwritten tests to check behaviour on inputs that are assumed to be edge cases *a priori*.
 
+These two test suites can be run via `dune build @runtest`. This will also display an example waveform in the terminal.
+
 - Automated testing on randomised test cases: tests to ensure correct behaviour on e.g. long input streams, large integers, etc.
 
-These two test suites can be run via `dune build @runtest`.
+This test can be run using `dune build && ./bin/main.exe`.
 
 - Testing on the Advent of Code problem input: the most important test, checking that behaviour is definitively correct as far as we care for solving the AoC problem.
 
-This needs to be manually run using `dune build && ./bin/main.exe` and requires the Advent of Code day 1 input data to be in `data/input.txt`.
+To run the real deal (i.e. solve day 1 of Advent of Code), use  `dune build && ./bin/main.exe <path_to_input_file>`.
+
+The latter two test sets use an OCaml implementation for verification, while the first batch uses manually-verified answers.
 
 ### Data input
 
